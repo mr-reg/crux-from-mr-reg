@@ -1,0 +1,15 @@
+# Description:  expect - programmed dialogue with interactive programs
+# URL:          https://github.com/aeruder/expect
+# Depends on: tcl
+
+name=expect
+version=1.1.1
+release=1
+source=(https://github.com/aeruder/expect/archive/refs/heads/master.zip)
+
+build() {
+        cd */
+	./configure --prefix=/usr
+        make 
+        make DESTDIR=$PKG install
+}

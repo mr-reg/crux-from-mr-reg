@@ -1,0 +1,15 @@
+# Description:	Tool Command Language (Tcl)
+# URL:	https://sourceforge.net/projects/tcl/
+# Depends on:	
+
+name=tcl
+version=8.6.15
+release=1
+source=(https://master.dl.sourceforge.net/project/tcl/Tcl/$version/tcl$version-src.tar.gz)
+
+build () {
+    cd */unix
+    ./configure --prefix=/usr options
+    make DESTDIR=$PKG install install-private-headers
+    ln -s tclsh8.6 $PKG/usr/bin/tclsh
+}

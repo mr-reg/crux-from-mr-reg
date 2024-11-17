@@ -1,0 +1,13 @@
+# Description:	Telegram messager
+# URL:	https://telegram.org
+# Depends on: 
+
+name=telegram
+version=5.7.2
+release=1
+source=(https://td.telegram.org/tlinux/tsetup.5.7.2.tar.xz)
+
+build () {
+    cd Telegram/
+    install -D Telegram $PKG/usr/bin/Telegram
+}
