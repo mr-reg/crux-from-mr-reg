@@ -1,0 +1,18 @@
+# Description: An image viewer and browser utility for the GNOME environment
+# URL: https://gitlab.gnome.org/GNOME/gthumb
+# Depends on: glib gtk libpng zlib libjpeg-turbo gsettings-desktop-schemas exiv2 gstreamer libtiff libraw librsvg libwebp libheif lcms2 bison flex
+
+name=gthumb
+version=3.12.6
+release=1
+source=(
+https://gitlab.gnome.org/GNOME/gthumb/-/archive/$version/gthumb-$version.tar.gz
+)
+
+
+build(){
+	cd */
+        meson build --prefix=/usr
+        ninja -C build
+        DESTDIR=$PKG ninja -C build install
+}

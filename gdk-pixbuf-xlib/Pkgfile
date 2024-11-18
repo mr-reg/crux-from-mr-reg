@@ -1,0 +1,16 @@
+# Description:  GdkPixbuf-Xlib contains the deprecated API for integrating GdkPixbuf with
+Xlib data types
+# URL:          https://gitlab.gnome.org/Archive/gdk-pixbuf-xlib
+# Depends on: 
+
+name=gdk-pixbuf-xlib
+version=2.40.2
+release=1
+source=(https://gitlab.gnome.org/Archive/$name/-/archive/$version/$name-$version.tar.gz)
+
+build() {
+        cd */
+	meson _build --prefix=/usr
+        cd _build
+	DESTDIR=$PKG ninja install
+}

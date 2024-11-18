@@ -1,0 +1,15 @@
+# Description: open source C++ library implementing the BitTorrent protocol
+# URL:	https://github.com/arvidn/libtorrent
+# Depends on: boost
+
+name=libtorrent-rasterbar
+version=1.2.19
+release=1
+source=(https://github.com/arvidn/libtorrent/releases/download/v$version/libtorrent-rasterbar-$version.tar.gz)
+
+build () {
+    cd */
+    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX:PATH=/usr .
+    make
+    make DESTDIR=$PKG install
+}

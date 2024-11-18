@@ -1,0 +1,15 @@
+# Description: System tray for Windowmaker
+# URL:	https://sourceforge.net/projects/wmsystemtray/
+# Depends on:	
+
+name=wmsystemtray
+version=1.4
+release=1
+source=(https://master.dl.sourceforge.net/project/wmsystemtray/wmsystemtray/wmsystemtray-$version.tar.gz)
+
+build () {
+    cd */
+    ./configure --prefix=/usr
+    make
+    make DESTDIR=$PKG install
+}

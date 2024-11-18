@@ -1,0 +1,17 @@
+# Description: Powerful yet simple to use screenshot software
+# URL:         https://github.com/flameshot-org/flameshot
+# Depends on:  qt5 cmake gcc
+
+name=flameshot
+version=12.1.0
+release=1
+source=(
+https://github.com/flameshot-org/flameshot/archive/refs/tags/v$version.tar.gz
+)
+
+
+build(){
+	cd */
+	cmake -S . -B build && cmake --build build
+        cmake --install build --prefix "$PKG/usr"
+}

@@ -1,0 +1,18 @@
+# Description: lightweight video thumbnailer
+# URL:         https://github.com/dirkvdb/ffmpegthumbnailer
+# Depends on:  
+
+name=ffmpegthumbnailer
+version=2.2.3
+release=1
+source=(
+https://github.com/dirkvdb/ffmpegthumbnailer/archive/refs/tags/$version.tar.gz
+)
+
+
+build(){
+	cd */
+        cmake -DCMAKE_BUILD_TYPE=Release -DENABLE_GIO=ON -DENABLE_THUMBNAILER=ON -DCMAKE_INSTALL_PREFIX:PATH=/usr .
+        make
+        make DESTDIR=$PKG install
+}
