@@ -11,5 +11,5 @@ build () {
     cd */
     cmake -B build -DCMAKE_BUILD_TYPE=Release  -DCMAKE_INSTALL_PREFIX:PATH=/usr -DGUI=OFF
     cmake --build build
-    cmake --install build  --prefix "$PKG"
+    cmake --install build  --prefix "$PKG/usr"
 }

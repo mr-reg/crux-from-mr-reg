@@ -1,0 +1,18 @@
+# Description: Renders images in the terminal
+# URL:         https://github.com/posva/catimg
+# Depends on:  
+
+name=catimg
+version=2.7.0
+release=1
+source=(
+https://github.com/posva/catimg/archive/refs/tags/$version.tar.gz
+)
+
+
+build(){
+	cd */
+        cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX:PATH=/usr .
+        make
+        make DESTDIR=$PKG install
+}

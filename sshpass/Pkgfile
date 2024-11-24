@@ -1,0 +1,14 @@
+# Description: Non-interactive ssh password auth
+# URL:	https://sourceforge.net/projects/sshpass/
+# Depends on:	
+
+name=sshpass
+version=1.10
+release=1
+source=(https://master.dl.sourceforge.net/project/sshpass/sshpass/$version/sshpass-$version.tar.gz)
+build () {
+    cd */
+    ./configure --prefix=/usr
+    make
+    make DESTDIR=$PKG install
+}
