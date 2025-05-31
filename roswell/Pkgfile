@@ -1,0 +1,18 @@
+# Description: Common Lisp environment setup Utility
+# URL:         https://roswell.github.io/
+# Depends on:  
+
+name=roswell
+version=24.10.115
+release=1
+source=(
+https://github.com/roswell/roswell/archive/refs/tags/v$version.tar.gz
+)
+
+build(){
+	cd */
+        sh bootstrap
+        ./configure --prefix=/usr
+        make
+        make DESTDIR=$PKG install
+}

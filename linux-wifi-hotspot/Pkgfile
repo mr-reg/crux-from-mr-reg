@@ -1,0 +1,14 @@
+# Description: linux-wifi-hotspot
+# URL:	
+# Depends on: 
+
+name=linux-wifi-hotspot
+version=v4.7.2
+release=1
+source=(https://github.com/lakinduakash/linux-wifi-hotspot/archive/refs/tags/$version.tar.gz)
+build () {
+      cd *
+      export PREFIX=/usr
+      make all
+    make DESTDIR=$PKG install
+}

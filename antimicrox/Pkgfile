@@ -1,0 +1,18 @@
+# Description: AntiMicroX is a graphical program used to map gamepad keys to keyboard, mouse, scripts and macros
+# URL:         https://github.com/AntiMicroX/antimicrox
+# Depends on:  
+
+name=antimicrox
+version=3.5.0
+release=1
+source=(
+https://github.com/AntiMicroX/antimicrox/archive/refs/tags/$version.tar.gz
+)
+
+
+build(){
+	cd */
+        cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX:PATH=/usr .
+        make
+        make DESTDIR=$PKG install
+}

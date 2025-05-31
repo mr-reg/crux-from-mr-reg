@@ -1,0 +1,28 @@
+# Description:  Android SDK Platform-Tools
+# URL:          https://developer.android.com/studio/releases/platform-tools
+# Maintainer:   Lin SiFuh, #crux at libera dot chat
+# Depends on:
+
+name=android-tools
+version=r36.0.0
+release=1
+source=(http://dl-ssl.google.com/android/repository/platform-tools_${version}-linux.zip)
+
+build() {
+
+    mkdir -p "${PKG}"/opt/"${name}"
+    cp -a $SRC/platform-tools/* "${PKG}"/opt/"${name}"
+
+    chmod +Xr -R "${PKG}"/opt/"${name}"
+
+    mkdir -p "${PKG}"/usr/bin/
+    TOOLS="adb"
+    for i in $TOOLS; do
+        ln -s  /opt/"${name}"/"${i}" "${PKG}"/usr/bin/"${i}"
+    done
+
+
+    rm -rf "${PKG}"/opt/"${name}"/{NOTICE.txt,api,systrace,source.properties}
+    # rm "${PKG}"/opt/bin/mke2fs.conf
+ 
+}

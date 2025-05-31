@@ -1,0 +1,15 @@
+# Description: XRDP
+# URL:	
+# Depends on:	
+
+name=xrdp
+version=0.10.3
+release=1
+source=(https://github.com/neutrinolabs/xrdp/releases/download/v$version/xrdp-$version.tar.gz)
+build () {
+    cd xrdp-*
+    ./bootstrap
+    ./configure --prefix=/usr
+    make
+    make DESTDIR=$PKG install
+}

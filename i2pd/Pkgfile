@@ -1,0 +1,23 @@
+# Description: i2pd
+# URL: https://github.com/PurpleI2P/i2pd
+# Depends on: 
+
+name=i2pd
+version=2.56.0
+release=1
+source=(
+https://github.com/PurpleI2P/i2pd/archive/refs/tags/${version}.tar.gz
+i2pd
+)
+
+
+build(){
+	cd i2pd-*/
+    make all
+    make DESTDIR=$PKG PREFIX=$PKG/usr install
+    rm -fv $PKG/var/lib/i2pd/*
+    mkdir -p $PKG/etc/rc.d
+    cd ..
+    chmod +x i2pd
+    cp -v i2pd $PKG/etc/rc.d
+}

@@ -1,0 +1,12 @@
+# Description:  TurboVNC is a high-speed version of VNC derived from TightVNC
+# URL:          https://turbovnc.org/
+# Depends on:   cmake libjpeg6-turbo
+
+name=turbovnc
+version=3.1.4
+source=(https://github.com/TurboVNC/turbovnc/releases/download/$version/turbovnc-$version.x86_64.rpm)
+release=1
+
+build() {
+        sudo rpm2pkg turbovnc-$version.x86_64.rpm
+}

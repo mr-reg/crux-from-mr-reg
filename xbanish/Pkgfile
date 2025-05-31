@@ -1,0 +1,14 @@
+# Description: xbanish
+# URL:	
+# Depends on: 
+
+name=xbanish
+version=v1.8
+release=1
+source=(https://github.com/jcs/xbanish/archive/refs/tags/$version.tar.gz)
+build () {
+      cd *
+      export PREFIX=/usr
+    make all
+    make DESTDIR=$PKG install
+}

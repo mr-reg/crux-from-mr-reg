@@ -1,0 +1,39 @@
+#!/bin/sh
+#
+# /etc/rc.d/i2pd: start/stop i2pd daemon
+#
+
+SSD=/sbin/start-stop-daemon
+PROG=/usr/bin/i2pd
+OPTS="--tunconf /etc/i2pd/tunnels.conf --conf /etc/i2pd/i2pd.conf"
+PID="/run/i2pd/i2pd.pid"
+
+case $1 in
+  start)
+    if [ ! -e /run/i2pd ]; then 
+      mkdir -p /run/i2pd
+    fi
+    $SSD --start -b --pidfile $PID --make-pidfile --exec $PROG -- $OPTS
+    ;;
+  stop)
+    $SSD --stop --retry 10 --pidfile $PID
+    ;;
+  restart)
+    $0 stop
+    $0 start
+    ;;
+  status)
+    $SSD --status --pidfile $PID
+    case $? in
+    0) echo "$PROG is running with pid $(pidof $PROG)" ;;
+    1) echo "$PROG is not running but the pid file $PID exists" ;;
+    3) echo "$PROG is not running" ;;
+    4) echo "Unable to determine the program status" ;;
+    esac
+    ;;
+  *)
+    echo "usage: $0 [start|stop|restart|status]"
+    ;;
+esac
+
+# End of file

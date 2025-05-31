@@ -1,3 +1,7 @@
 *.tar.gz
 *.tar.bz2
 work
+*.run
+nohup.out
+*.zip
+*.rpm
